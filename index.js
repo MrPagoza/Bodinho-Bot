@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits, EmbedBuilder } = require("discord.js");
+zconst { Client, GatewayIntentBits, EmbedBuilder } = require("discord.js");
 
 const client = new Client({
   intents: [GatewayIntentBits.Guilds]
@@ -12,13 +12,67 @@ client.on("interactionCreate", async interaction => {
   if (!interaction.isChatInputCommand()) return;
 
   if (interaction.commandName === "regras") {
-    const embed = new EmbedBuilder()
-      .setTitle("🤖 Meu Bot")
-      .setDescription("Meu primeiro embed está funcionando! 💜")
-      .setColor(0x5865F2);
+  const embed = new EmbedBuilder()
+    .setTitle("📜 REGRAS DO SERVIDOR")
+    .setDescription(
+      `*💙 Seja bem-vindo(a)!*
 
-    await interaction.reply({ embeds: [embed] });
+*Para manter nossa comunidade organizada, segura e agradável para todos, pedimos que leia e respeite as regras abaixo. A convivência fica muito melhor quando todos fazem sua parte!* ✨
+
+## 🛡️ Regras Gerais
+
+**1.** 🤝 Respeite todos os membros do servidor.
+
+**2.** 🚫 Não é permitido utilizar linguagem *ofensiva, racista, sexista ou discriminatória.*
+
+**3.** 📢 Não é permitido realizar *spam ou flood* de mensagens.
+
+**4.** 📚 Utilize corretamente cada canal de acordo com sua finalidade.
+
+**5.** 🔔 Evite realizar marcações sem motivo ou necessidade.
+
+## 🎨 Regras de Conteúdo
+
+**1.** 🔞 Não é permitido compartilhar *conteúdo explícito ou adulto.*
+
+**2.** 🦠 Não é permitido compartilhar *links maliciosos, vírus ou qualquer conteúdo que possa prejudicar outros membros.*
+
+**3.** ©️ Não é permitido compartilhar conteúdo que viole *direitos autorais.*
+
+## 🤝 Regras de Conduta
+
+**1.** 💖 Seja respeitoso, educado e cortês com os outros membros.
+
+**2.** 🚫 Não é permitido *assediar, intimidar ou perseguir* outros membros.
+
+**3.** 👤 Não é permitido utilizar nicknames ou avatares *ofensivos, inadequados ou impróprios.*
+
+**4.** 💰 Não é permitido realizar trocas de contas ou dinheiro através deste servidor. Em caso de golpes ou negociações realizadas entre membros, **a equipe não se responsabiliza por perdas ou prejuízos.**
+
+## ⚖️ Punições
+
+*As punições podem variar de acordo com a gravidade da situação:*
+
+⚠️ **Advertência**
+
+🔇 **Mute temporário**
+
+⏳ **Banimento temporário**
+
+🔨 **Banimento permanente**
+
+> 💙 *Nosso objetivo não é punir, mas manter o servidor um lugar seguro, divertido e agradável para todos.*
+
+🌟 *Esperamos que você aproveite o servidor, faça novas amizades e tenha uma ótima experiência por aqui!*
+
+✨ *Obrigado por fazer parte da nossa comunidade!* 💙`
+    )
+    .setColor(0xC6DBEF)
+    .setFooter({
+      text: "📌 Ao permanecer no servidor, você concorda em respeitar estas regras."
+    });
+
+  await interaction.reply({ embeds: [embed] });
   }
-});
 
 client.login(process.env.TOKEN);
