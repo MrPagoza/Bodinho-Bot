@@ -2,7 +2,7 @@ const { REST, Routes, SlashCommandBuilder } = require("discord.js");
 
 const commands = [
   new SlashCommandBuilder()
-    .setName("Regras")
+    .setName("regras")
     .setDescription("Exibe as regras do servidor")
     .toJSON()
 ];
@@ -14,11 +14,14 @@ const rest = new REST({ version: "10" }).setToken(process.env.TOKEN);
     console.log("Registrando comandos...");
 
     await rest.put(
-      Routes.applicationCommands(process.env.CLIENT_ID),
+      Routes.applicationGuildCommands(
+        process.env.CLIENT_ID,
+        "1507953305945505812"
+      ),
       { body: commands }
     );
 
-    console.log("Comando /teste registrado!");
+    console.log("Comando /regras registrado no servidor!");
   } catch (error) {
     console.error(error);
   }
