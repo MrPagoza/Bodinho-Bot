@@ -72,7 +72,8 @@ client.on("interactionCreate", async interaction => {
       text: "📌 Ao permanecer no servidor, você concorda em respeitar estas regras."
     });
 
-  await interaction.reply({ embeds: [embed] });
+    await interaction.reply({ embeds: [embed] });
   }
+});
 
 client.login(process.env.TOKEN);
