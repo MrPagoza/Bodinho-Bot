@@ -1,21 +1,28 @@
 const { Client, GatewayIntentBits, EmbedBuilder } = require("discord.js");
 
 const client = new Client({
-  intents: [GatewayIntentBits.Guilds]
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.MessageContent
+  ]
 });
 
 client.once("ready", () => {
   console.log(`Bot conectado como ${client.user.tag}!`);
 });
 
-client.on("interactionCreate", async interaction => {
-  if (!interaction.isChatInputCommand()) return;
+client.on("messageCreate", async (message) => {
+  if (message.author.bot) return;
 
-  if (interaction.commandName === "regras") {
-  const embed = new EmbedBuilder()
-    .setTitle("📜 REGRAS DO SERVIDOR")
-    .setDescription(
-      `*💙 Seja bem-vindo(a)!*
+  if (message.content === "!regras") {
+    try {
+      await message.delete();
+
+      const embed = new EmbedBuilder()
+        .setTitle("📜 REGRAS DO SERVIDOR")
+        .setDescription(
+          `*💙 Seja bem-vindo(a)!*
 
 *Para manter nossa comunidade organizada, segura e agradável para todos, pedimos que leia e respeite as regras abaixo. A convivência fica muito melhor quando todos fazem sua parte!* ✨
 
@@ -66,13 +73,17 @@ client.on("interactionCreate", async interaction => {
 🌟 *Esperamos que você aproveite o servidor, faça novas amizades e tenha uma ótima experiência por aqui!*
 
 ✨ *Obrigado por fazer parte da nossa comunidade!* 💙`
-    )
-    .setColor(0xC6DBEF)
-    .setFooter({
-      text: "📌 Ao permanecer no servidor, você concorda em respeitar estas regras."
-    });
+        )
+        .setColor(0xC6DBEF)
+        .setFooter({
+          text: "📌 Ao permanecer no servidor, você concorda em respeitar estas regras."
+        });
 
-    await interaction.reply({ embeds: [embed] });
+      await message.channel.send({ embeds: [embed] });
+
+    } catch (error) {
+      console.error("Erro ao enviar as regras:", error);
+    }
   }
 });
 
