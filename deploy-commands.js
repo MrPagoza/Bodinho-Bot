@@ -2,8 +2,8 @@ const { REST, Routes, SlashCommandBuilder } = require("discord.js");
 
 const commands = [
   new SlashCommandBuilder()
-    .setName("teste")
-    .setDescription("Testa o meu bot")
+    .setName("Regras")
+    .setDescription("Exibe as regras do servidor")
     .toJSON()
 ];
 
