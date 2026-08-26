@@ -11,7 +11,7 @@ client.once("ready", () => {
 client.on("interactionCreate", async interaction => {
   if (!interaction.isChatInputCommand()) return;
 
-  if (interaction.commandName === "Regras") {
+  if (interaction.commandName === "regras") {
     const embed = new EmbedBuilder()
       .setTitle("🤖 Meu Bot")
       .setDescription("Meu primeiro embed está funcionando! 💜")
