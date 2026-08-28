@@ -38,6 +38,8 @@ client.on("messageCreate", async (message) => {
 
 **5.** 🔔 Evite realizar marcações sem motivo ou necessidade.
 
+**6.** 🖼️ Mantenha sua foto de perfil e imagens de perfil apropriadas para o servidor. Não são permitidas imagens *explícitas, sexualizadas ou excessivamente sugestivas (+18).*
+
 ## 🎨 Regras de Conteúdo
 
 **1.** 🔞 Não é permitido compartilhar *conteúdo explícito ou adulto.*
